@@ -1,20 +1,25 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
-var alien = new Alien(50,50);
-var alien2 = new Alien(150,150);
+let alien = new Alien(50,50);
+let alien2 = new Alien(150,150);
+let aliens = [alien, alien2]
 
-function preload() {
-  alien.preload();
-  alien2.preload();
+let preload = () => {
+  aliens.forEach((a) => {
+    a.preload();
+  })
   game.stage.backgroundColor = '#eee';
 }
 
-function create() {
+let create = () => {
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  alien.create();
-  alien2.create();
+  aliens.forEach((a) => {
+    a.create();
+  })
 }
 
-function update() {
-  alien.update();
-  alien2.update();
+let update = () => {
+  aliens.forEach((a) => {
+    a.update();
+  })
 }
+
+let game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });

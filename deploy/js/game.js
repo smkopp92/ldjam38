@@ -40,45 +40,76 @@ class Alien {
     this.sprite.animations.add('spin');
     this.sprite.animations.play('spin', 20, true);
     this.sprite.speed = 5;
-    this.sprite.anchor.setTo(0.5,0);
+    this.sprite.headings = {x: 1, y: 1}
+    this.sprite.anchor.setTo(0.5, 0.5);
+    this.sprite.floorColor = 1
 
     this.sprite.inputEnabled = true;
-    this.sprite.events.onInputDown.add(this.reverse_direction, this);
+    this.sprite.events.onInputDown.add(this.changeAxis, this);
   }
-
-  reverse_direction() {
-    this.sprite.speed *= -1;
-    this.sprite.scale.x *= -1;
+  changeAxis() {
+    this.sprite.floorColor *=-1
   }
-
   update() {
-    this.sprite.x += this.sprite.speed
+    this.check_world_collision();
+
+    let axis = this.check_floor_color();
+
+    this.walk(axis);
+  }
+
+  walk(axis) {
+    this.sprite[axis] += this.sprite.speed * this.sprite.headings[axis]
+  }
+
+  check_floor_color() {
+    if(this.sprite.floorColor == 1) {
+      return "x"
+    }
+    else if(this.sprite.floorColor == -1) {
+      return "y"
+    }
+  }
+
+  check_world_collision() {
     if (this.sprite.x >= game.world.width - Math.abs(this.sprite.width * this.sprite.anchor.x)) {
-      this.reverse_direction();
+      this.sprite.headings.x = -1;
     }
     else if(this.sprite.x <= Math.abs(this.sprite.width * this.sprite.anchor.x)) {
-      this.reverse_direction();
+      this.sprite.headings.x = 1;
+    }
+    if (this.sprite.y >= game.world.height - Math.abs(this.sprite.height * this.sprite.anchor.y)) {
+      this.sprite.headings.y = -1;
+    }
+    else if(this.sprite.y <= Math.abs(this.sprite.height * this.sprite.anchor.y)) {
+      this.sprite.headings.y = 1;
     }
   }
+
 }
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
-var alien = new Alien(50,50);
-var alien2 = new Alien(150,150);
+let alien = new Alien(50,50);
+let alien2 = new Alien(150,150);
+let aliens = [alien, alien2]
 
-function preload() {
-  alien.preload();
-  alien2.preload();
+let preload = () => {
+  aliens.forEach((a) => {
+    a.preload();
+  })
   game.stage.backgroundColor = '#eee';
 }
 
-function create() {
+let create = () => {
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  alien.create();
-  alien2.create();
+  aliens.forEach((a) => {
+    a.create();
+  })
 }
 
-function update() {
-  alien.update();
-  alien2.update();
+let update = () => {
+  aliens.forEach((a) => {
+    a.update();
+  })
 }
+
+let game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
