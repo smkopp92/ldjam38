@@ -1,3 +1,11 @@
+## Setup
+run the following
+`npm install`
+`npm install -g grunt-cli`
+`grunt`
+
+
+
 ## Credits
 art assets from Kenny.nl (Thanks!)
 
