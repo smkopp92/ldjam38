@@ -26,24 +26,31 @@ b.exports=c,c.getUnvisitedNode=function(a){for(var b=a.length,c=0;c!==b;c++){var
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
 
 function preload() {
+  game.load.atlasJSONHash('alian', 'assets/p1_walk/p1_walk.png', 'assets/p1_walk/p1_walk.json');
   game.stage.backgroundColor = '#eee';
-  game.load.spritesheet('dude', 'assets/test_image.png', 16, 17);
 }
 
 function create() {
-  sprite = game.add.sprite(0,0, 'dude');
-  sprite.scale.x += 3
-  sprite.scale.y += 3
+  sprite = game.add.sprite(0,0, 'alian');
   sprite.animations.add('spin');
   sprite.animations.play('spin', 20, true);
-  tween = game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+  sprite.speed = 5;
+  sprite.anchor.setTo(0.5,0);
+
+  // sprite.angle = 10
 }
 
 function update() {
-  if (sprite.x >= 100) {
-    tween.reverse=true
+  sprite.x += sprite.speed
+  if (sprite.x >= 500) {
+    sprite.speed = -5;
+    sprite.scale.x = -1
+
+    // sprite.angle = -10
   }
   else if(sprite.x <= 1) {
-    tween.reverse = false;
+    sprite.speed = 5;
+    sprite.scale.x = `1
+    // sprite.angle = 10
   }
 }
