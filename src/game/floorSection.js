@@ -16,12 +16,20 @@ class FloorSection {
     this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.path_to_image);
   }
 
-
   update() {
-    // if(this.on){}
+    if(this.on){
+      this.sprite.alpha = 1;
+    }
+    else{
+      this.sprite.alpha = 0;
+    }
+  }
 
-    // else
+  turn_on(){
+    this.on = true;
+  }
 
-
+  turn_off(){
+    this.on = false;
   }
 }

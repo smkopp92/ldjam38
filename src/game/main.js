@@ -24,4 +24,6 @@ function create() {
 function update() {
   alien.update();
   alien2.update();
+  floorSection1.update();
+  floorSection2.update();
 }
