@@ -63,20 +63,21 @@ class Alien {
 }
 
 class FloorSection {
-  constructor(starting_x, starting_y, starting_width, starting_height) {
+  constructor(starting_x, starting_y, starting_width, starting_height, image) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.starting_width = starting_width;
     this.starting_height = starting_height;
+    this.path_to_image = image
     this.on = true
   }
 
   preload() {
-    game.load.image('floorSection', 'assets/Tiles/bg_castle.png');
+    game.load.image(this.path_to_image, this.path_to_image);
   }
 
   create() {
-    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, 'floorSection');
+    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.path_to_image);
   }
 
 
@@ -92,18 +93,22 @@ class FloorSection {
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
 var alien = new Alien(50,50);
 var alien2 = new Alien(150,150);
-var floorSection = new FloorSection(0,0,800,600);
+var floorSection1 = new FloorSection(0,0,400,600, 'assets/Tiles/bg_castle.png');
+var floorSection2 = new FloorSection(400,0,400,600, 'assets/Tiles/box.png');
 
 function preload() {
   alien.preload();
   alien2.preload();
-  floorSection.preload();
+  floorSection1.preload();
+  floorSection2.preload();
+
   game.stage.backgroundColor = '#eee';
 }
 
 function create() {
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  floorSection.create();
+  floorSection1.create();
+  floorSection2.create();
   alien.create();
   alien2.create();
 }
