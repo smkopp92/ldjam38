@@ -26,18 +26,18 @@ b.exports=c,c.getUnvisitedNode=function(a){for(var b=a.length,c=0;c!==b;c++){var
 var alien = {
 
     preload: () => {
-      game.load.atlasJSONHash('alian', 'assets/p1_walk/p1_walk.png', 'assets/p1_walk/p1_walk.json');
+      game.load.atlasJSONHash('alien', 'assets/p1_walk/p1_walk.png', 'assets/p1_walk/p1_walk.json');
     },
 
     create: () => {
-      sprite = game.add.sprite(0,0, 'alian');
+      sprite = game.add.sprite(game.world.width/2,0, 'alien');
       sprite.animations.add('spin');
       sprite.animations.play('spin', 20, true);
       sprite.speed = 5;
       sprite.anchor.setTo(0.5,0);
 
       sprite.inputEnabled = true;
-      sprite.events.onInputDown.add(reverse_direction, this);
+      sprite.events.onInputDown.add(alien.reverse_direction, this);
 
     },
 
@@ -48,10 +48,10 @@ var alien = {
 
     update: () => {
       sprite.x += sprite.speed
-      if (sprite.x >= 500) {
+      if (sprite.x >= game.world.width - Math.abs(sprite.width * sprite.anchor.x)) {
         alien.reverse_direction();
       }
-      else if(sprite.x <= 1) {
+      else if(sprite.x <= Math.abs(sprite.width * sprite.anchor.x)) {
         alien.reverse_direction();
       }
     }
