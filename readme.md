@@ -1,6 +1,11 @@
-## What is the Phaser Project Template?
+## Credits
+art assets from Kenny.nl (Thanks!)
 
-This is a simple project template I created to help add structure and automation to your next [Phaser](http://phaser.io/) game. It includes the following things:
+
+
+## based on Phaser Project Template
+
+It includes the following things:
 
 *   A **package.json** for installing npm dependencies
 *   **GruntFile.js** for automating build tasks and compiling your game
@@ -31,7 +36,7 @@ Via the command line, navigate into the template directory's root and run the fo
 
 <pre lang="javascript">> npm install</pre>
 
-This will download all the dependencies in the package.json file and install them locally for you to use. 
+This will download all the dependencies in the package.json file and install them locally for you to use.
 
 <img border="0" width="624" id="Picture 1" src="http://jessefreeman.com/wp-content/uploads/2014/03/pt-install.png" />
 
