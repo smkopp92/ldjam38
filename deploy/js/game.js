@@ -64,57 +64,49 @@ class Alien {
 }
 
 class FloorSection {
-  constructor(starting_x, starting_y, starting_width, starting_height, image) {
+  constructor(starting_x, starting_y, starting_width, starting_height, color) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.starting_width = starting_width;
     this.starting_height = starting_height;
-    this.path_to_image = image
-    this.on = true
+    this.on = true;
+    this.color = color;
   }
 
   preload() {
-    game.load.image(this.path_to_image, this.path_to_image);
+    game.load.image(this.color, "assets/Tiles/lock_" + this.color.toLowerCase() + ".png");
+    game.load.image("default", "assets/Tiles/bg_castle.png");
   }
 
   create() {
-    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.path_to_image);
+    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.color);
   }
 
   update() {
     if(this.on){
-      this.sprite.alpha = 1;
+      this.sprite.loadTexture(this.color);
     }
     else{
-      this.sprite.alpha = 0;
+      this.sprite.loadTexture("default");
     }
-  }
-
-  turn_on(){
-    this.on = true;
-  }
-
-  turn_off(){
-    this.on = false;
   }
 }
 
 class Switch {
-  constructor(starting_x, starting_y, floorSection, on_image, off_image) {
+  constructor(starting_x, starting_y, floorSection, color) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.floorSection = floorSection;
-    this.path_to_image_on = on_image;
-    this.path_to_image_off = off_image;
+    this.color = color;
   }
 
   preload() {
-    game.load.image(this.path_to_image_on, this.path_to_image_on);
-    game.load.image(this.path_to_image_off, this.path_to_image_off);
+    game.load.image('on', 'assets/Items/button' + this.color + '.png');
+    game.load.image('off', 'assets/Items/button' + this.color + '_pressed.png');
   }
 
   create() {
-    this.sprite = game.add.sprite(this.starting_x, this.starting_y, this.path_to_image_on);
+    this.sprite = game.add.sprite(this.starting_x, this.starting_y, 'on');
     this.sprite.inputEnabled = true;
     this.sprite.events.onInputDown.add(this.toggle, this);
   }
@@ -122,20 +114,20 @@ class Switch {
   toggle(){
     this.floorSection.on = !this.floorSection.on;
     if(this.floorSection.on){
-      this.sprite.loadTexture(this.path_to_image_on);
+      this.sprite.loadTexture('on');
     }
     else{
-      this.sprite.loadTexture(this.path_to_image_off);
+      this.sprite.loadTexture('off');
     }
   }
 }
 
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
-var alien = new Alien(50,50);
-var alien2 = new Alien(150,150);
-var floorSection1 = new FloorSection(0,0,400,600, 'assets/Tiles/bg_castle.png');
-var floorSection2 = new FloorSection(400,0,400,600, 'assets/Tiles/box.png');
-var switch1 = new Switch(0,0,floorSection1, 'assets/Items/buttonRed.png', 'assets/Items/buttonRed_pressed.png');
+var alien = new Alien(50, 50);
+var alien2 = new Alien(150, 150);
+var floorSection1 = new FloorSection(0, 0, 400, 600, 'Green');
+var floorSection2 = new FloorSection(400, 0, 400, 600, 'Blue');
+var switch1 = new Switch(0, 0, floorSection1, 'Green');
 
 function preload() {
   alien.preload();
