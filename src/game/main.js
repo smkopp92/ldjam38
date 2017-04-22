@@ -1,37 +1,24 @@
-/**
- *
- * This is a simple state template to use for getting a Phaser game up
- * and running quickly. Simply add your own game logic to the default
- * state object or delete it and make your own.
- *
- */
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
 
-var state = {
-    init: function() {
-        // Delete this init block or replace with your own logic.
+function preload() {
+  game.stage.backgroundColor = '#eee';
+  game.load.spritesheet('dude', 'assets/test_image.png', 16, 17);
+}
 
-        // Create simple text display for current Phaser version
-        var text = "Phaser "+Phaser.VERSION + " works!";
-        var style = { font: "24px Arial", fill: "#fff", align: "center" };
-        var t = game.add.text(this.world.centerX, this.world.centerY, text, style);
-        t.anchor.setTo(0.5, 0.5);
+function create() {
+  sprite = game.add.sprite(0,0, 'dude');
+  sprite.scale.x += 3
+  sprite.scale.y += 3
+  sprite.animations.add('spin');
+  sprite.animations.play('spin', 20, true);
+  tween = game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+}
 
-    },
-    preload: function() {
-        // STate preload logic goes here
-    },
-    create: function(){
-      // State create logic goes here
-    },
-    update: function() {
-        // State Update Logic goes here.
-    }
-};
-
-var game = new Phaser.Game(
-    800,
-    480,
-    Phaser.AUTO,
-    'game',
-    state
-);
+function update() {
+  if (sprite.x >= 100) {
+    tween.reverse=true
+  }
+  else if(sprite.x <= 1) {
+    tween.reverse = false;
+  }
+}
