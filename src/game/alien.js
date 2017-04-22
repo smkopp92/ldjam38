@@ -5,7 +5,7 @@ class Alien {
   }
 
   preload() {
-    game.load.atlasJSONHash('alien', 'assets/p1_walk/p1_walk.png', 'assets/p1_walk/p1_walk.json');
+    game.load.atlasJSONHash('alien', 'assets/Player/p1_walk/p1_walk.png', 'assets/Player/p1_walk/p1_walk.json');
   }
 
   create() {
