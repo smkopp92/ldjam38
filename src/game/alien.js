@@ -38,12 +38,18 @@ class Alien {
   }
 
   check_floor_color() {
-    if(this.sprite.floorColor == 1) {
-      return "x"
-    }
-    else if(this.sprite.floorColor == -1) {
-      return "y"
-    }
+    getObjectsAtLocation(this.sprite.x, this.sprite.y, aliens, (tile)=>{
+      debugger;
+      let floorColor = tile.color
+      if(floorColor == 1) {
+        return "x"
+      }
+      else if(floorColor == -1) {
+        return "y"
+      }
+
+    })
+
   }
 
   check_world_collision() {

@@ -1,8 +1,12 @@
 let alien = new Alien(50,50);
 let alien2 = new Alien(150,150);
-let aliens = [alien, alien2]
+let aliens = game.add.group();
+let floorTiles = game.add.group();
+aliens.addMultiple([alien, alien2])
+
 
 let preload = () => {
+
   aliens.forEach((a) => {
     a.preload();
   })
