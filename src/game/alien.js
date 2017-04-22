@@ -27,7 +27,6 @@ class Alien {
   }
 
   update() {
-
     this.sprite.x += this.sprite.speed
     this.x = this.sprite.x
     if (this.sprite.x >= game.world.width - Math.abs(this.sprite.width * this.sprite.anchor.x)) {
