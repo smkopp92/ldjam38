@@ -1,15 +1,15 @@
 class Alien {
-  constructor(starting_x, starting_y) {
-    this.starting_x = starting_x;
-    this.starting_y = starting_y;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
   }
 
   preload() {
-    game.load.atlasJSONHash('alien', 'assets/p1_walk/p1_walk.png', 'assets/p1_walk/p1_walk.json');
+    game.load.atlasJSONHash('alien', 'assets/Player/p1_walk/p1_walk.png', 'assets/Player/p1_walk/p1_walk.json');
   }
 
   create() {
-    this.sprite = game.add.sprite(this.starting_x, this.starting_y, 'alien');
+    this.sprite = game.add.sprite(this.x, this.y, 'alien');
     game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     this.sprite.body.collideWorldBounds = true;
     this.sprite.animations.add('spin');
@@ -27,7 +27,9 @@ class Alien {
   }
 
   update() {
+
     this.sprite.x += this.sprite.speed
+    this.x = this.sprite.x
     if (this.sprite.x >= game.world.width - Math.abs(this.sprite.width * this.sprite.anchor.x)) {
       this.reverse_direction();
     }
