@@ -31,6 +31,9 @@ var alien = {
 
     create: () => {
       sprite = game.add.sprite(game.world.width/2,0, 'alien');
+
+      game.physics.enable(sprite, Phaser.Physics.ARCADE);
+      sprite.body.collideWorldBounds = true;
       sprite.animations.add('spin');
       sprite.animations.play('spin', 20, true);
       sprite.speed = 5;
@@ -65,6 +68,8 @@ function preload() {
 }
 
 function create() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
   alien.create();
 }
 

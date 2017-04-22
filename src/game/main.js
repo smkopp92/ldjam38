@@ -6,7 +6,11 @@ function preload() {
 }
 
 function create() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
   alien.create();
+
+
 }
 
 function update() {
