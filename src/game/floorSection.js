@@ -1,35 +1,28 @@
 class FloorSection {
-  constructor(starting_x, starting_y, starting_width, starting_height, image) {
+  constructor(starting_x, starting_y, starting_width, starting_height, color) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.starting_width = starting_width;
     this.starting_height = starting_height;
-    this.path_to_image = image
-    this.on = true
+    this.on = true;
+    this.color = color;
   }
 
   preload() {
-    game.load.image(this.path_to_image, this.path_to_image);
+    game.load.image(this.color, "assets/Tiles/lock_" + this.color.toLowerCase() + ".png");
+    game.load.image("default", "assets/Tiles/bg_castle.png");
   }
 
   create() {
-    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.path_to_image);
+    this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.color);
   }
 
   update() {
     if(this.on){
-      this.sprite.alpha = 1;
+      this.sprite.loadTexture(this.color);
     }
     else{
-      this.sprite.alpha = 0;
+      this.sprite.loadTexture("default");
     }
-  }
-
-  turn_on(){
-    this.on = true;
-  }
-
-  turn_off(){
-    this.on = false;
   }
 }

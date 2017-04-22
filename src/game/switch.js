@@ -1,19 +1,18 @@
 class Switch {
-  constructor(starting_x, starting_y, floorSection, on_image, off_image) {
+  constructor(starting_x, starting_y, floorSection, color) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.floorSection = floorSection;
-    this.path_to_image_on = on_image;
-    this.path_to_image_off = off_image;
+    this.color = color;
   }
 
   preload() {
-    game.load.image(this.path_to_image_on, this.path_to_image_on);
-    game.load.image(this.path_to_image_off, this.path_to_image_off);
+    game.load.image('on', 'assets/Items/button' + this.color + '.png');
+    game.load.image('off', 'assets/Items/button' + this.color + '_pressed.png');
   }
 
   create() {
-    this.sprite = game.add.sprite(this.starting_x, this.starting_y, this.path_to_image_on);
+    this.sprite = game.add.sprite(this.starting_x, this.starting_y, 'on');
     this.sprite.inputEnabled = true;
     this.sprite.events.onInputDown.add(this.toggle, this);
   }
@@ -21,10 +20,10 @@ class Switch {
   toggle(){
     this.floorSection.on = !this.floorSection.on;
     if(this.floorSection.on){
-      this.sprite.loadTexture(this.path_to_image_on);
+      this.sprite.loadTexture('on');
     }
     else{
-      this.sprite.loadTexture(this.path_to_image_off);
+      this.sprite.loadTexture('off');
     }
   }
 }
