@@ -6,15 +6,18 @@ var floorSection2 = new FloorSection(400, 0, 400, 600, 'Blue');
 var switch1 = new Switch(0, 0, floorSection1, 'Green');
 
 function preload() {
+  background.preload();
   alien.preload();
   alien2.preload();
   floorSection1.preload();
   floorSection2.preload();
   switch1.preload();
+
   game.stage.backgroundColor = '#eee';
 }
 
 function create() {
+  background.create();
   game.physics.startSystem(Phaser.Physics.ARCADE);
   floorSection1.create();
   floorSection2.create();
