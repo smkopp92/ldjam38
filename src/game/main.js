@@ -12,20 +12,22 @@ function create() {
   sprite.speed = 5;
   sprite.anchor.setTo(0.5,0);
 
-  // sprite.angle = 10
+  sprite.inputEnabled = true;
+  sprite.events.onInputDown.add(reverse_direction, this);
+
+}
+
+function reverse_direction () {
+  sprite.speed *= -1;
+  sprite.scale.x *= -1
 }
 
 function update() {
   sprite.x += sprite.speed
   if (sprite.x >= 500) {
-    sprite.speed = -5;
-    sprite.scale.x = -1
-
-    // sprite.angle = -10
+    reverse_direction()
   }
   else if(sprite.x <= 1) {
-    sprite.speed = 5;
-    sprite.scale.x = `1
-    // sprite.angle = 10
+    reverse_direction()
   }
 }
