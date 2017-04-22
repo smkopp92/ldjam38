@@ -6,13 +6,19 @@ function preload() {
 }
 
 function create() {
-  sprite = game.add.sprite(10,10, 'dude');
-  // sprite.scale.x += 3
-  // sprite.scale.y += 3
+  sprite = game.add.sprite(0,0, 'dude');
+  sprite.scale.x += 3
+  sprite.scale.y += 3
   sprite.animations.add('spin');
-  sprite.animations.play('spin', 5, true);
-  game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+  sprite.animations.play('spin', 20, true);
+  tween = game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
 }
 
 function update() {
+  if (sprite.x >= 100) {
+    tween.reverse=true
+  }
+  else if(sprite.x <= 1) {
+    tween.reverse = false;
+  }
 }
