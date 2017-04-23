@@ -4,6 +4,7 @@ var alien2 = new Alien(150, 150);
 var floorSection1 = new FloorSection(0, 0, 200, 600, 'Green');
 var floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
 var switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
+var lever1 = new Lever(0, 150, floorSection1, 'Green');
 var background = new Background();
 
 level1.prototype = {
@@ -14,7 +15,7 @@ level1.prototype = {
     floorSection1.preload();
     floorSection2.preload();
     switch1.preload();
-
+    lever1.preload();
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
@@ -23,6 +24,7 @@ level1.prototype = {
     floorSection1.create();
     floorSection2.create();
     switch1.create();
+    lever1.create();
     alien.create();
     alien2.create();
   },
@@ -31,5 +33,11 @@ level1.prototype = {
     alien2.update();
     floorSection1.update();
     floorSection2.update();
+    if (alien2.sprite.overlap(lever1.sprite) && lever1.disabled == false) {
+      lever1.toggle();
+      lever1.disabled = true;
+    } else if (lever1.disabled == true && !alien2.sprite.overlap(lever1.sprite)){
+      lever1.disabled = false;
+    }
   }
 }
