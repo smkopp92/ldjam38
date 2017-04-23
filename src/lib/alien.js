@@ -16,6 +16,8 @@ class Alien {
     this.sprite.animations.add('walk');
     this.sprite.animations.play('walk', 20, true);
     this.sprite.speed = 5;
+    this.sprite.scale.x *= 0.5
+    this.sprite.scale.y *= 0.5
     this.sprite.anchor.setTo(0.5,0.5);
   }
 
@@ -32,13 +34,17 @@ class Alien {
   check_floor_color() {
     let newAxis = 'x';
     floorSections.forEach ((tile) => {
-      if (tile.on && tile.sprite.getBounds().contains(this.sprite.x, this.sprite.y)) {
+      if (tile.on && this.overlap(tile.sprite)) {
         if (tile.color === "Green") {
           newAxis = 'y';
         }
       }
     });
     return newAxis;
+  }
+
+  overlap(otherSprite) {
+    return otherSprite.getBounds().contains(this.sprite.x, this.sprite.y)
   }
 
   check_world_collision() {
