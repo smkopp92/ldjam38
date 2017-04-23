@@ -12,8 +12,8 @@ class Alien {
     this.sprite = game.add.sprite(this.x, this.y, 'alien');
     game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     this.sprite.body.collideWorldBounds = true;
-    this.sprite.animations.add('spin');
-    this.sprite.animations.play('spin', 20, true);
+    this.sprite.animations.add('walk');
+    this.sprite.animations.play('walk', 20, true);
     this.sprite.speed = 5;
     this.sprite.anchor.setTo(0.5,0);
 

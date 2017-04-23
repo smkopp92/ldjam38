@@ -12,8 +12,8 @@ class Alien {
     this.sprite = game.add.sprite(this.x, this.y, 'alien');
     game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     this.sprite.body.collideWorldBounds = true;
-    this.sprite.animations.add('spin');
-    this.sprite.animations.play('spin', 20, true);
+    this.sprite.animations.add('walk');
+    this.sprite.animations.play('walk', 20, true);
     this.sprite.speed = 5;
     this.sprite.anchor.setTo(0.5,0);
 
@@ -143,10 +143,10 @@ var gameTitle = function(game){};
 
 gameTitle.prototype = {
   preload: function(){
-    this.game.load.image("play","assets/Tiles/boxCoinAlt.png");
+    this.game.load.image("play","assets/UI/greenstart.png");
   },
   create: function(){
-    var playButton = this.game.add.button(160,320,"play",this.playTheGame,this);
+    var playButton = this.game.add.button(game.world.width/2,320,"play",this.playTheGame,this);
     playButton.anchor.setTo(0.5,0.5);
   },
   playTheGame: function(){
