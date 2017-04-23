@@ -22,3 +22,7 @@ let updateAll = (list) => {
 let softOverlap = (thisSprite, otherSprite) => {
   return otherSprite.getBounds().contains(thisSprite.x, thisSprite.y)
 }
+
+let toggle = (target) => {
+  target.on = !target.on
+}
