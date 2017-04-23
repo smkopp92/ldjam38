@@ -10,13 +10,20 @@ run the following
 Getting npm/grunt setup:
 Open a command prompt and run: 
 `bash`
+
 `sudo apt-get npm`
+
 `sudo apt-get update`
+
 `sudo apt-get install xdg-utils --fix-missing`
+
 `ln -s /usr/bin/nodejs /usr/bin/node`
+
 CD to the project direcotry and run:
 `npm install`
+
 `npm install -g grunt-cli`
+
 `grunt`
 
 Grunt can't open a tab in a browser running in windows so open [http://localhost:8080/index.html](http://localhost:8080/index.html) manually.
