@@ -4,7 +4,7 @@ class buttonPanel {
   }
 
   preload() {
-    game.load.image("buttonPanelBg", "assets/UI/button_panel_bg.png", 150, 66);
+    game.load.image("buttonPanelBg", "assets/UI/button_panel_bg.png", 150, 70);
   }
 
   create() {
