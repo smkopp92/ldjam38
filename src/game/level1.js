@@ -6,6 +6,8 @@ var floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
 var switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
 var lever1 = new Lever(0, 150, floorSection1, 'Green');
 var background = new Background();
+let aliens;
+let floorSections;
 
 level1.prototype = {
   preload: function(){
@@ -27,6 +29,8 @@ level1.prototype = {
     lever1.create();
     alien.create();
     alien2.create();
+    aliens = [alien, alien2];
+    floorSections = [floorSection1, floorSection2];
   },
   update: function() {
     alien.update();
