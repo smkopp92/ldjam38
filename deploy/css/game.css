@@ -1,7 +1,5 @@
 ﻿body {
     background-image: url('/../assets/Tiles/bg_fade.png'), url('/../assets/Tiles/background_tile.png');
-    margin: 0, 0;
-    padding: 0, 0;
     background-size: 100% 150%, auto;
     background-repeat: no-repeat, repeat;
 }
