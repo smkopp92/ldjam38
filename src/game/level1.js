@@ -1,6 +1,6 @@
 let level1 = function(game){};
 let alien = new Alien(215, 215);
-let alien2 = new Alien(250, 250);
+let alien2 = new Alien(250, 250, {x: 1, y: -1});
 let floorSection1 = new FloorSection(150, 0, 200, 800, 'Green');
 let floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
 let wall1 = new Wall(150, 0, 4000, 70);

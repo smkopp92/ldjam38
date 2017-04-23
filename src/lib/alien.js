@@ -1,8 +1,9 @@
 class Alien {
-  constructor(x, y) {
+  constructor(x, y, initialHeadings={x: 1, y: 1}) {
     this.x = x;
     this.y = y;
     this.axis = 'x';
+    this.headings = initialHeadings;
   }
 
   preload() {
@@ -13,7 +14,6 @@ class Alien {
     this.sprite = game.add.sprite(this.x, this.y, 'alien');
     game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
     this.sprite.body.collideWorldBounds = true;
-    this.sprite.headings = {x: 1, y: 1}
     this.sprite.animations.add('walk');
     this.sprite.animations.play('walk', 20, true);
     this.sprite.speed = 5;
@@ -29,7 +29,7 @@ class Alien {
   }
 
   walk(axis) {
-    this.sprite[axis] += this.sprite.speed * this.sprite.headings[axis]
+    this.sprite[axis] += this.sprite.speed * this.headings[axis]
   }
 
   check_floor_color() {
@@ -51,7 +51,7 @@ class Alien {
   check_wall_collision() {
     walls.forEach((tile) => {
       if (this.sprite.overlap(tile.sprite)) {
-        this.sprite.headings[this.axis] *= -1;
+        this.headings[this.axis] *= -1;
         if (this.axis == 'x') {
           this.sprite.scale[this.axis] *= -1;
         }
