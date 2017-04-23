@@ -1,6 +1,7 @@
 class buttonPanel {
   constructor() {
-
+    this.buttons={
+    }
   }
 
   preload() {

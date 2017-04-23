@@ -1,27 +1,34 @@
 class playerButton {
-  constructor(color, key) {
-    this.color = color;
-    this.key = key;
+  constructor(x, y, color, keyName) {
+    this.color = color.toLowerCase();
+    this.keyName = keyName;
+    this.on = false;
+    this.x = x;
+    this.y = y;
   }
 
   preload() {
-    game.load.image('on', 'assets/Items/button' + this.color + '.png');
-    game.load.image('off', 'assets/Items/button' + this.color + '_pressed.png');
+    game.load.image(this.imgKey('up'), `assets/UI/${this.color}_${this.keyName}_up.png`);
+    game.load.image(this.imgKey('down'), `assets/UI/${this.color}_${this.keyName}_down.png`);
+    this.key = game.input.keyboard.addKey(Phaser.Keyboard[this.keyName.toUpperCase()]);
+    this.key.onDown.add((key) => {
+      this.on = !this.on;
+    }, this);
   }
 
   create() {
-    this.sprite = game.add.sprite(this.starting_x, this.starting_y, 'on');
-    this.sprite.inputEnabled = true;
-    this.sprite.events.onInputDown.add(this.toggle, this);
+    this.sprite = game.add.sprite(this.x, this.y, this.imgKey('up'));
   }
 
-  toggle(){
-    this.floorSection.on = !this.floorSection.on;
-    if(this.floorSection.on){
-      this.sprite.loadTexture('on');
+  update() {
+    if (this.key.isDown) {
+      this.sprite.loadTexture(this.imgKey('down'))
     }
-    else{
-      this.sprite.loadTexture('off');
+    else {
+      this.sprite.loadTexture(this.imgKey('up'))
     }
+  }
+  imgKey(press){
+    return `${this.color}_${press}`
   }
 }
