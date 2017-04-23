@@ -44,9 +44,11 @@ class Alien {
   check_world_collision() {
     if (this.sprite.x >= game.world.width - Math.abs(this.sprite.width * this.sprite.anchor.x)) {
       this.sprite.headings.x = -1;
+      this.sprite.scale.x *= -1;
     }
     else if(this.sprite.x <= Math.abs(this.sprite.width * this.sprite.anchor.x)) {
       this.sprite.headings.x = 1;
+      this.sprite.scale.x *= -1;
     }
     if (this.sprite.y >= game.world.height - Math.abs(this.sprite.height * this.sprite.anchor.y)) {
       this.sprite.headings.y = -1;
