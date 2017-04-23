@@ -17,6 +17,10 @@ class FloorSwitch {
     this.sprite.events.onInputDown.add(this.toggle, this);
   }
 
+  update(){
+    //do nothing
+  }
+
   toggle(){
     this.floorSection.on = !this.floorSection.on;
     if(this.floorSection.on){
