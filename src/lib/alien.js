@@ -35,17 +35,13 @@ class Alien {
   check_floor_color() {
     let newAxis = 'x';
     floorSections.forEach ((tile) => {
-      if (tile.on && this.overlap(tile.sprite)) {
+      if (tile.on && softOverlap(this.sprite, tile.sprite)) {
         if (tile.color === "Green") {
           newAxis = 'y';
         }
       }
     });
     return newAxis;
-  }
-
-  overlap(otherSprite) {
-    return otherSprite.getBounds().contains(this.sprite.x, this.sprite.y)
   }
 
   check_wall_collision() {
