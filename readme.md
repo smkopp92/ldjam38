@@ -5,6 +5,7 @@ run the following
 `grunt`
 
 
+[play now!](http://ldjam38.bitballoon.com/)
 
 ## Credits
 art assets from Kenny.nl (Thanks!)
