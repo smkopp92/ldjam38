@@ -5,7 +5,6 @@ class Wall {
     this.starting_width = starting_width;
     this.starting_height = starting_height;
     this.on = true;
-    this.sprite
   }
 
   preload() {
@@ -14,6 +13,8 @@ class Wall {
 
   create() {
     this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, 'wall');
+    this.sprite.scale.x *= 0.5
+    this.sprite.scale.y *= 0.5
   }
 
   update() {

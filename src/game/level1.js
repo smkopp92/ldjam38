@@ -1,9 +1,12 @@
 let level1 = function(game){};
-let alien = new Alien(50, 50);
-let alien2 = new Alien(150, 150);
-let floorSection1 = new FloorSection(0, 0, 600, 200, 'Green');
+let alien = new Alien(215, 215);
+let alien2 = new Alien(250, 250);
+let floorSection1 = new FloorSection(150, 0, 200, 800, 'Green');
 let floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
-let wall1 = new Wall(0,0,1200, 50);
+let wall1 = new Wall(150, 0, 4000, 70);
+let wall2 = new Wall(150, 0, 70, 2000);
+let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
+let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
 let switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
 let lever1 = new Lever(0, 150, floorSection1, 'Green');
 let background = new Background();
@@ -14,12 +17,13 @@ let goal = new Goal(450,450);
 
 level1.prototype = {
   preload: function(){
+    aliens = [alien, alien2];
+    floorSections = [floorSection1, floorSection2];
+    walls = [wall1, wall2, wall3, wall4];
     background.preload();
-    alien.preload();
-    alien2.preload();
-    floorSection1.preload();
-    floorSection2.preload();
-    wall1.preload();
+    preloadAll(aliens);
+    preloadAll(floorSections);
+    preloadAll(walls);
     switch1.preload();
     lever1.preload();
     goal.preload();
@@ -28,23 +32,17 @@ level1.prototype = {
   create: function(){
     background.create();
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    floorSection1.create();
-    floorSection2.create();
-    wall1.create();
+    createAll(aliens);
+    createAll(floorSections);
+    createAll(walls);
     switch1.create();
     lever1.create();
-    alien.create();
-    alien2.create();
-    aliens = [alien, alien2];
-    floorSections = [floorSection1, floorSection2];
     goal.create();
   },
   update: function() {
-    alien.update();
-    alien2.update();
-    floorSection1.update();
-    floorSection2.update();
-    wall1.update();
+    updateAll(aliens);
+    updateAll(floorSections);
+    updateAll(walls);
     goal.update();
     if (alien2.sprite.overlap(goal.sprite)){
       this.game.state.start('Level2')
