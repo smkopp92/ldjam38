@@ -6,7 +6,7 @@ class FloorSection {
     this.starting_height = starting_height;
     this.on = true;
     this.color = color;
-    this.sprite
+    this.sprite;
   }
 
   preload() {
@@ -21,10 +21,10 @@ class FloorSection {
 
   update() {
     if(this.on){
-      this.sprite.alpha = 1
+      this.sprite.alpha = 1;
     }
     else{
-      this.sprite.alpha = 0
+      this.sprite.alpha = 0;
     }
   }
 }

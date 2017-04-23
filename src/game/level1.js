@@ -7,13 +7,13 @@ let wall1 = new Wall(150, 0, 4000, 70);
 let wall2 = new Wall(150, 0, 70, 2000);
 let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
-let switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
-let lever1 = new Lever(400, 150, floorSection1, 'Green');
 let playerButtonPanel = new buttonPanel();
+let switch1 = new Switch('greenSwitch', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, toggle.bind(this, floorSection1));
+let switch2 = new Switch('blueSwitch', 700, 100, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, toggle.bind(this, floorSection2));
 let aliens;
 let floorSections;
 let walls;
-let levers;
+let switches;
 let goal = new Goal(450,450);
 
 level1.prototype = {
@@ -21,12 +21,12 @@ level1.prototype = {
     aliens = [alien, alien2];
     floorSections = [floorSection1, floorSection2];
     walls = [wall1, wall2, wall3, wall4];
-    levers = [lever1]
+    switches = [switch1, switch2];
+    preloadAll(aliens);
     preloadAll(aliens);
     preloadAll(floorSections);
     preloadAll(walls);
-    preloadAll(levers);
-    switch1.preload();
+    preloadAll(switches);
     goal.preload();
     playerButtonPanel.preload();
     game.stage.backgroundColor = '#eee';
@@ -36,8 +36,7 @@ level1.prototype = {
     createAll(aliens);
     createAll(floorSections);
     createAll(walls);
-    createAll(levers);
-    switch1.create();
+    createAll(switches);
     goal.create();
     playerButtonPanel.create();
   },
@@ -45,7 +44,7 @@ level1.prototype = {
     updateAll(aliens);
     updateAll(floorSections);
     updateAll(walls);
-    updateAll(levers);
+    updateAll(switches);
     goal.update();
     playerButtonPanel.update();
     if (alien2.sprite.overlap(goal.sprite)){
