@@ -1,4 +1,4 @@
-class Switch {
+class FloorSwitch {
   constructor(starting_x, starting_y, floorSection, color) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
