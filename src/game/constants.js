@@ -18,3 +18,7 @@ let updateAll = (list) => {
     element.update();
   })
 }
+
+let softOverlap = (thisSprite, otherSprite) => {
+  return otherSprite.getBounds().contains(thisSprite.x, thisSprite.y)
+}

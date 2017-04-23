@@ -1,4 +1,4 @@
-let game = new Phaser.Game(WORLDWIDTH, WORLDHEIGHT, Phaser.CANVAS, '', "game");
+let game = new Phaser.Game(WORLDWIDTH, WORLDHEIGHT, Phaser.CANVAS, '', "game", true);
 game.state.add("GameTitle",gameTitle);
 game.state.add("Level1",level1);
 game.state.add("Level2",level2);

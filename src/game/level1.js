@@ -9,7 +9,7 @@ let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
 let switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
 let lever1 = new Lever(0, 150, floorSection1, 'Green');
-let background = new Background();
+// let background = new Background();
 let aliens;
 let floorSections;
 let walls;
@@ -20,7 +20,7 @@ level1.prototype = {
     aliens = [alien, alien2];
     floorSections = [floorSection1, floorSection2];
     walls = [wall1, wall2, wall3, wall4];
-    background.preload();
+    // background.preload();
     preloadAll(aliens);
     preloadAll(floorSections);
     preloadAll(walls);
@@ -30,7 +30,7 @@ level1.prototype = {
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
-    background.create();
+    // background.create();
     game.physics.startSystem(Phaser.Physics.ARCADE);
     createAll(aliens);
     createAll(floorSections);
