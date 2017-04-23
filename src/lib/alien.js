@@ -2,6 +2,7 @@ class Alien {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+    this.axis = 'x';
   }
 
   preload() {
@@ -22,9 +23,9 @@ class Alien {
   }
 
   update() {
-    this.check_world_collision();
-    let axis = this.check_floor_color();
-    this.walk(axis);
+    this.axis = this.check_floor_color();
+    this.check_wall_collision();
+    this.walk(this.axis);
   }
 
   walk(axis) {
@@ -47,20 +48,14 @@ class Alien {
     return otherSprite.getBounds().contains(this.sprite.x, this.sprite.y)
   }
 
-  check_world_collision() {
-    if (this.sprite.x >= game.world.width - Math.abs(this.sprite.width * this.sprite.anchor.x)) {
-      this.sprite.headings.x = -1;
-      this.sprite.scale.x *= -1;
-    }
-    else if(this.sprite.x <= Math.abs(this.sprite.width * this.sprite.anchor.x)) {
-      this.sprite.headings.x = 1;
-      this.sprite.scale.x *= -1;
-    }
-    if (this.sprite.y >= game.world.height - Math.abs(this.sprite.height * this.sprite.anchor.y)) {
-      this.sprite.headings.y = -1;
-    }
-    else if(this.sprite.y <= Math.abs(this.sprite.height * this.sprite.anchor.y)) {
-      this.sprite.headings.y = 1;
-    }
+  check_wall_collision() {
+    walls.forEach((tile) => {
+      if (this.sprite.overlap(tile.sprite)) {
+        this.sprite.headings[this.axis] *= -1;
+        if (this.axis == 'x') {
+          this.sprite.scale[this.axis] *= -1;
+        }
+      }
+    });
   }
 }
