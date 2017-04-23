@@ -9,20 +9,21 @@ class FloorSection {
   }
 
   preload() {
-    game.load.image(this.color, "assets/Tiles/lock_" + this.color.toLowerCase() + ".png");
-    game.load.image("default", "assets/Tiles/bg_castle.png");
+    game.load.spritesheet(this.color, "assets/Tiles/" + this.color.toLowerCase() + "_beam.png",150,1);
   }
 
   create() {
     this.sprite = game.add.tileSprite(this.starting_x, this.starting_y, this.starting_width, this.starting_height, this.color);
+    this.sprite.animations.add('zap');
+    this.sprite.animations.play('zap', 8, true);
   }
 
   update() {
     if(this.on){
-      this.sprite.loadTexture(this.color);
+      this.sprite.alpha = 1
     }
     else{
-      this.sprite.loadTexture("default");
+      this.sprite.alpha = 0
     }
   }
 }
