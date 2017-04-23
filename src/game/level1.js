@@ -8,6 +8,7 @@ var lever1 = new Lever(0, 150, floorSection1, 'Green');
 var background = new Background();
 let aliens;
 let floorSections;
+var goal = new Goal(450,450);
 
 level1.prototype = {
   preload: function(){
@@ -18,6 +19,7 @@ level1.prototype = {
     floorSection2.preload();
     switch1.preload();
     lever1.preload();
+    goal.preload();
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
@@ -31,12 +33,17 @@ level1.prototype = {
     alien2.create();
     aliens = [alien, alien2];
     floorSections = [floorSection1, floorSection2];
+    goal.create();
   },
   update: function() {
     alien.update();
     alien2.update();
     floorSection1.update();
     floorSection2.update();
+    goal.update();
+    if (alien2.sprite.overlap(goal.sprite)){
+      this.game.state.start('Level2')
+    }
     if (alien2.sprite.overlap(lever1.sprite) && lever1.disabled == false) {
       lever1.toggle();
       lever1.disabled = true;
