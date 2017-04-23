@@ -24,6 +24,5 @@ let softOverlap = (thisSprite, otherSprite) => {
 }
 
 let toggle = (target) => {
-  console.log("toggle callback called!")
   target.on = !target.on
 }

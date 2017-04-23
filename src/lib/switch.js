@@ -42,8 +42,7 @@ class Switch {
     }
     if (this.toggled) {
       this.sprite.loadTexture(this.name + 'on');
-    }
-    else {
+    } else {
       this.sprite.loadTexture(this.name + 'off');
     }
   }
