@@ -4,6 +4,30 @@ run the following
 `npm install -g grunt-cli`
 `grunt`
 
+## Win10 Setup (w/ Linux Subsystem)
+[Install the Linux Subsystem and enable dev mode](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+
+Getting npm/grunt setup:
+Open a command prompt and run: 
+`bash`
+
+`sudo apt-get npm`
+
+`sudo apt-get update`
+
+`sudo apt-get install xdg-utils --fix-missing`
+
+`ln -s /usr/bin/nodejs /usr/bin/node`
+
+CD to the project direcotry and run:
+`npm install`
+
+`npm install -g grunt-cli`
+
+`grunt`
+
+Grunt can't open a tab in a browser running in windows so open [http://localhost:8080/index.html](http://localhost:8080/index.html) manually.
+
 
 [play now!](http://ldjam38.bitballoon.com/)
 
