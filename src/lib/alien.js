@@ -38,6 +38,10 @@ class Alien {
       if (tile.on && softOverlap(this.sprite, tile.sprite)) {
         if (tile.color === "Green") {
           newAxis = 'y';
+        } else if (tile.color === "Blue") {
+          newAxis = 'x';
+          this.headings['x'] = -1;
+          this.sprite.scale[this.axis] *= -1;
         }
       }
     });
