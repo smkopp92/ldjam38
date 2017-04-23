@@ -1,14 +1,16 @@
-var level1 = function(game){};
-var alien = new Alien(50, 50);
-var alien2 = new Alien(150, 150);
-var floorSection1 = new FloorSection(0, 0, 200, 600, 'Green');
-var floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
-var switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
-var lever1 = new Lever(0, 150, floorSection1, 'Green');
-var background = new Background();
+let level1 = function(game){};
+let alien = new Alien(50, 50);
+let alien2 = new Alien(150, 150);
+let floorSection1 = new FloorSection(0, 0, 600, 200, 'Green');
+let floorSection2 = new FloorSection(400, 0, 200, 600, 'Blue');
+let wall1 = new Wall(0,0,1200, 50);
+let switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
+let lever1 = new Lever(0, 150, floorSection1, 'Green');
+let background = new Background();
 let aliens;
 let floorSections;
-var goal = new Goal(450,450);
+let walls;
+let goal = new Goal(450,450);
 
 level1.prototype = {
   preload: function(){
@@ -17,6 +19,7 @@ level1.prototype = {
     alien2.preload();
     floorSection1.preload();
     floorSection2.preload();
+    wall1.preload();
     switch1.preload();
     lever1.preload();
     goal.preload();
@@ -27,6 +30,7 @@ level1.prototype = {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     floorSection1.create();
     floorSection2.create();
+    wall1.create();
     switch1.create();
     lever1.create();
     alien.create();
@@ -40,6 +44,7 @@ level1.prototype = {
     alien2.update();
     floorSection1.update();
     floorSection2.update();
+    wall1.update();
     goal.update();
     if (alien2.sprite.overlap(goal.sprite)){
       this.game.state.start('Level2')

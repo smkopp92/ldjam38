@@ -6,6 +6,7 @@ class FloorSection {
     this.starting_height = starting_height;
     this.on = true;
     this.color = color;
+    this.sprite
   }
 
   preload() {
