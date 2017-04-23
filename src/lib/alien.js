@@ -22,7 +22,6 @@ class Alien {
   update() {
     this.check_world_collision();
     let axis = this.check_floor_color();
-    console.log(axis);
     this.walk(axis);
   }
 
@@ -33,7 +32,7 @@ class Alien {
   check_floor_color() {
     let newAxis = 'x';
     floorSections.forEach ((tile) => {
-      if (tile.on && tile.sprite.overlap(this.sprite)) {
+      if (tile.on && tile.sprite.getBounds().contains(this.sprite.x, this.sprite.y)) {
         if (tile.color === "Green") {
           newAxis = 'y';
         }
