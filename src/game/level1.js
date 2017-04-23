@@ -8,11 +8,12 @@ let wall2 = new Wall(150, 0, 70, 2000);
 let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
 let switch1 = new FloorSwitch(0, 0, floorSection1, 'Green');
-let lever1 = new Lever(0, 150, floorSection1, 'Green');
+let lever1 = new Lever(400, 150, floorSection1, 'Green');
 // let background = new Background();
 let aliens;
 let floorSections;
 let walls;
+let levers;
 let goal = new Goal(450,450);
 
 level1.prototype = {
@@ -20,12 +21,13 @@ level1.prototype = {
     aliens = [alien, alien2];
     floorSections = [floorSection1, floorSection2];
     walls = [wall1, wall2, wall3, wall4];
+    levers = [lever1]
     // background.preload();
     preloadAll(aliens);
     preloadAll(floorSections);
     preloadAll(walls);
+    preloadAll(levers);
     switch1.preload();
-    lever1.preload();
     goal.preload();
     game.stage.backgroundColor = '#eee';
   },
@@ -35,23 +37,18 @@ level1.prototype = {
     createAll(aliens);
     createAll(floorSections);
     createAll(walls);
+    createAll(levers);
     switch1.create();
-    lever1.create();
     goal.create();
   },
   update: function() {
     updateAll(aliens);
     updateAll(floorSections);
     updateAll(walls);
+    updateAll(levers);
     goal.update();
     if (alien2.sprite.overlap(goal.sprite)){
       this.game.state.start('Level2')
-    }
-    if (alien2.sprite.overlap(lever1.sprite) && lever1.disabled == false) {
-      lever1.toggle();
-      lever1.disabled = true;
-    } else if (lever1.disabled == true && !alien2.sprite.overlap(lever1.sprite)){
-      lever1.disabled = false;
     }
   }
 }
