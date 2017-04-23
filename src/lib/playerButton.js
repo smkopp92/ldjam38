@@ -12,7 +12,7 @@ class playerButton {
     game.load.image(this.imgKey('down'), `assets/UI/${this.color}_${this.keyName}_down.png`);
     this.key = game.input.keyboard.addKey(Phaser.Keyboard[this.keyName.toUpperCase()]);
     this.key.onDown.add((key) => {
-      this.on = !this.on;
+      this.toggle();
     }, this);
   }
 
@@ -21,7 +21,12 @@ class playerButton {
   }
 
   update() {
-    if (this.key.isDown) {
+
+  }
+
+  toggle() {
+    this.on = !this.on;
+    if (this.on) {
       this.sprite.loadTexture(this.imgKey('down'))
     }
     else {
