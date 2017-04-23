@@ -4,7 +4,7 @@ class Lever {
     this.starting_y = starting_y;
     this.floorSection = floorSection;
     this.color = color;
-    this.disabled = false;
+    this.current_alien = null;
   }
 
   preload() {
@@ -24,5 +24,16 @@ class Lever {
     else{
       this.sprite.loadTexture('leverOff');
     }
+  }
+
+  update(){
+    aliens.forEach((alien) => {
+      if(softOverlap(alien.sprite, this.sprite) && this.current_alien == null) {
+        this.toggle();
+        this.current_alien = alien;
+      } else if(this.current_alien == alien && !softOverlap(alien.sprite, this.sprite)) {
+        this.current_alien = null;
+      }
+    })
   }
 }
