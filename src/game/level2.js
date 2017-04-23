@@ -7,6 +7,8 @@ level2.prototype = {
   },
   create: function(){
     lvl2_background.create();
+    text = game.add.text(game.world.centerX, game.world.centerY, "Level 2!", { font: "65px Arial", fill: "#232354", align: "center" });
+    text.anchor.setTo(0.5, 0.5);
   },
   update: function() {
 
