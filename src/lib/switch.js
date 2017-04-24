@@ -15,6 +15,7 @@ class Switch {
   preload() {
     game.load.image(this.name + 'on', this.enabled_img);
     game.load.image(this.name + 'off', this.disabled_img);
+
   }
 
   create() {
@@ -26,6 +27,7 @@ class Switch {
         this.callback();
       }, this);
     }
+
   }
 
   update() {
