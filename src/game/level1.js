@@ -16,6 +16,8 @@ let goal = new Goal(1150,450);
 
 level1.prototype = {
   preload: function(){
+    game.load.audio('bgm', ['assets/Sound/Rainbow_Run.mp3']);
+    game.load.audio('goal_sfx', ['assets/Sound/goal_sfx.mp3']);
     aliens = [alien];
     floorSections = [floorSection1, floorSection2];
     walls = [wall1, wall2, wall3, wall4];
@@ -28,7 +30,10 @@ level1.prototype = {
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
-    // background.create();
+    let music = game.add.audio('bgm');
+    music.loop = true;
+    music.volume = 0.3;
+    music.play();
     game.physics.startSystem(Phaser.Physics.ARCADE);
     createAll(aliens);
     createAll(floorSections);

@@ -10,20 +10,24 @@ class Switch {
     this.toggled = false;
     this.current_alien = null;
     this.name = name;
+    this.switch_sfx;
   }
 
   preload() {
     game.load.image(this.name + 'on', this.enabled_img);
     game.load.image(this.name + 'off', this.disabled_img);
+    game.load.audio('switch_sfx', ['assets/Sound/switch_sfx.mp3']);
   }
 
   create() {
+    this.switch_sfx = game.add.audio('switch_sfx');
     this.sprite = game.add.sprite(this.starting_x, this.starting_y, this.name + 'off');
     if (this.player_toggleable) {
       this.sprite.inputEnabled = true;
       this.sprite.events.onInputDown.add(() => {
         this.toggled = !this.toggled;
         this.callback();
+        this.switch_sfx.play();
       }, this);
     }
   }
@@ -35,6 +39,7 @@ class Switch {
           this.callback();
           this.toggled = !this.toggled;
           this.current_alien = alien;
+          this.switch_sfx.play();
         } else if(this.current_alien == alien && !softOverlap(alien.sprite, this.sprite)) {
           this.current_alien = null;
         }
