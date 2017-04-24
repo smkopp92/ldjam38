@@ -9,6 +9,6 @@ gameTitle.prototype = {
     playButton.anchor.setTo(0.5,0.5);
   },
   playTheGame: function(){
-    this.game.state.start("Level1");
+    this.game.state.start("Level0");
   }
 }

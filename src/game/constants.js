@@ -26,3 +26,9 @@ let softOverlap = (thisSprite, otherSprite) => {
 let toggle = (target) => {
   target.on = !target.on
 }
+
+let goToLevel2 = () => {
+  text = game.add.text(game.world.centerX, game.world.centerY, "Good Job!", { font: "65px Arial", fill: "#232354", align: "center" });
+  text.anchor.setTo(0.5, 0.5);
+  setTimeout(function(){game.state.start("Level2")}, 1000);
+}
