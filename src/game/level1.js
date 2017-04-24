@@ -1,4 +1,4 @@
-let level1 = function(game){};
+let level1 = function(game) {};
 
 level1.prototype = {
   aliens: [],
@@ -16,7 +16,8 @@ level1.prototype = {
     let wall2 = new Wall(150, 0, 70, 2000);
     let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
     let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
-    let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, false, toggle.bind(this, floorSection2));
+    // let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, false, toggle.bind(this, floorSection2));
+    switch2 = new Switch('blueSwitch', 255, 212, 'assets/Items/buttonBlue_pressed.png', 'assets/Items/buttonBlue.png', false, true, false, toggle.bind(this, floorSection2));
     let playerButtonPanel = new ButtonPanel(
       () => {},
       () => {floorSection1.on = !floorSection1.on},
