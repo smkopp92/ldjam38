@@ -4,4 +4,4 @@ game.state.add("Level0",level0);
 game.state.add("Level1",level1);
 game.state.add("Level2",level2);
 game.state.add("DevLevel", devLevel);
-game.state.start("Level1");
+game.state.start("DevLevel");
