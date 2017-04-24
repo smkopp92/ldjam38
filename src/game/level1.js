@@ -1,24 +1,24 @@
-let level1 = function(game){};
-let alien = new Alien(220, 100, {x: 1, y: -1});
-let floorSection1 = new FloorSection(450, 0, 100, 800, 'Green');
-let floorSection2 = new FloorSection(900, 0, 100, 800, 'Blue');
+let level1 = function(game) {};
+let alien = new Alien(220, 100, { x: 1, y: -1 });
+let floorSection1 = new FloorSection(450, 0, 150, 800, 'Green');
+let floorSection2 = new FloorSection(900, 0, 150, 800, 'Blue');
 let wall1 = new Wall(150, 0, 4000, 70);
 let wall2 = new Wall(150, 0, 70, 2000);
-let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
-let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
+let wall3 = new Wall(WORLDWIDTH - 35, 0, 70, 2000);
+let wall4 = new Wall(150, WORLDHEIGHT - 35, 4000, 70);
 let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, false, toggle.bind(this, floorSection1));
 let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, false, toggle.bind(this, floorSection2));
 let playerButtonPanel = new ButtonPanel(
-  () => {},
-  () => {floorSection1.on = !floorSection1.on},
-  () => {floorSection2.on = !floorSection2.on},
-  () => {}
+    () => {},
+    () => { floorSection1.on = !floorSection1.on },
+    () => { floorSection2.on = !floorSection2.on },
+    () => {}
 );
 let aliens;
 let floorSections;
 let walls;
 let switches;
-let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goal);
+let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goToLevel2);
 
 level1.prototype = {
   preload: function(){
@@ -47,16 +47,14 @@ level1.prototype = {
     createAll(walls);
     createAll(switches);
     playerButtonPanel.create();
-
     goal1.create();
-  },
-  update: function() {
-    updateAll(aliens);
-    updateAll(floorSections);
-    updateAll(walls);
-    updateAll(switches);
-    playerButtonPanel.update();
-
-    goal1.update();
-  }
+    },
+   update: function() {
+     updateAll(aliens);
+     updateAll(floorSections);
+     updateAll(walls);
+     updateAll(switches);
+     playerButtonPanel.update();
+     goal1.update();
+    }
 }
