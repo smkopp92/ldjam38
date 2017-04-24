@@ -7,6 +7,7 @@ level1.prototype = {
   switches: [],
   gameObjects: [],
   music: null,
+  playerButtonPanel: null,
 
   preload: function(){
     let alien = new Alien(220, 100, {x: 1, y: -1});
@@ -48,6 +49,10 @@ level1.prototype = {
     music.volume = 0.3;
     music.play();
     createAll(gameObjects);
+    //HOW 2 DISABLE BUTTS
+    // playerButtonPanel.buttons.q.callback = () => {
+    //   playerButtonPanel.disable('w');
+    // }
   },
 
   update: function() {
