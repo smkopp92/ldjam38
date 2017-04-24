@@ -1,6 +1,5 @@
 var level0 = function(game){};
 
-
 level0.prototype = {
   floorSections: [],
   gameObjects: [],
@@ -15,11 +14,19 @@ level0.prototype = {
     let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, toggle.bind(this, floorSection));
     let goal = new Goal(game.world.width - 260, game.world.centerY);
     let alien = new Alien(215, 215);
+    let playerButtonPanel = new ButtonPanel(
+      () => {},
+      () => {floorSection.on = !floorSection.on},
+      () => {},
+      () => {
+        game.state.start('Level0');
+      }
+    );
 
     walls = [wall1, wall2, wall3, wall4];
     floorSections = [floorSection];
 
-    gameObjects = [floorSection, wall1, wall2, wall3, wall4, alien, switch1, goal];
+    gameObjects = [floorSection, wall1, wall2, wall3, wall4, alien, switch1, goal, playerButtonPanel];
     preloadAll(gameObjects);
   },
   create: function(){
