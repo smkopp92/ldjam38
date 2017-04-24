@@ -8,7 +8,7 @@ class PowerPanel {
   }
 
   create(y) {
-    this.sprite = game.add.sprite(150, y + 10, 'on');
+    this.sprite = game.add.sprite(145, y + 10, 'on');
   }
 
   update() {

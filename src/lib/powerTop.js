@@ -4,7 +4,7 @@ class PowerTop {
   }
 
   create(y) {
-    this.sprite = game.add.sprite(150, y + 10, 'top');
+    this.sprite = game.add.sprite(145, y + 10, 'top');
   }
 
   update() {

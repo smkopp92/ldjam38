@@ -14,11 +14,11 @@ class PowerGauge {
   }
 
   create() {
-    this.top.create(1);
-    this.bottom.create((this.length + 1) * 27);
+    this.top.create(2);
+    this.bottom.create((this.length + 1) * 26);
     let i = 1;
     this.panels.forEach((panel) => {
-      panel.create(27 * i);
+      panel.create(26 * i);
       i++;
     })
   }

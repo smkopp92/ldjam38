@@ -4,7 +4,7 @@ class PowerBottom {
   }
 
   create(y) {
-    this.sprite = game.add.sprite(150, y + 10, 'bottom');
+    this.sprite = game.add.sprite(145, y + 10, 'bottom');
   }
 
   update() {
