@@ -8,12 +8,17 @@ let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
 let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, false, toggle.bind(this, floorSection1));
 let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, false, toggle.bind(this, floorSection2));
-let playerButtonPanel = new ButtonPanel();
+let playerButtonPanel = new ButtonPanel(
+  () => {},
+  () => {floorSection1.on = !floorSection1.on},
+  () => {floorSection2.on = !floorSection2.on},
+  () => {}
+);
 let aliens;
 let floorSections;
 let walls;
 let switches;
-let goal1 = new Switch('goal1', 350, 450, 'assets/Tiles/goal1.png', '', false, true, true, goal);
+let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goal);
 
 level1.prototype = {
   preload: function(){
