@@ -27,6 +27,7 @@ class Switch {
         }
     }
 
+<<<<<<< HEAD
     create() {
         this.switch_sfx = game.add.audio('switch_sfx');
         this.goal_sfx = game.add.audio('goal_sfx');
@@ -46,6 +47,22 @@ class Switch {
                     this.switch_sfx.play();
                 }, this);
             }
+=======
+  update() {
+    if (this.alien_toggleable) {
+      aliens.forEach((alien) => {
+        if(softOverlap(alien.sprite, this.sprite) && this.current_alien == null) {
+          this.callback();
+          this.toggled = !this.toggled;
+          this.current_alien = alien;
+          if (this.goal) {
+            this.goal_sfx.play();
+          } else {
+            this.switch_sfx.play();
+          }
+        } else if(this.current_alien == alien && !softOverlap(alien.sprite, this.sprite)) {
+          this.current_alien = null;
+>>>>>>> origin/master
         }
     }
 
