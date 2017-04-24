@@ -29,13 +29,4 @@ class ButtonPanel {
       this.buttons[button].update();
     }
   }
-
-  buttonStates() {
-    return {
-      q: this.buttons.q.on,
-      w: this.buttons.w.on,
-      e: this.buttons.e.on,
-      r: this.buttons.r.on,
-    }
-  }
 }
