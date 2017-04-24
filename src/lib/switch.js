@@ -12,10 +12,12 @@ class Switch {
     this.current_alien = null;
     this.name = name;
     this.switch_sfx;
+    this.goal_sfx;
   }
 
   preload() {
     game.load.audio('switch_sfx', ['assets/Sound/switch_sfx.mp3']);
+    game.load.audio('goal_sfx', ['assets/Sound/goal_sfx.mp3']);
     if(this.goal){
       game.load.spritesheet('goal', this.enabled_img, 186, 186);
     } else {
@@ -26,6 +28,7 @@ class Switch {
 
   create() {
     this.switch_sfx = game.add.audio('switch_sfx');
+    this.goal_sfx = game.add.audio('goal_sfx');
     if(this.goal){
       this.sprite = game.add.sprite(this.starting_x, this.starting_y, 'goal');
       this.sprite.animations.add('pulse');
