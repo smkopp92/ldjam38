@@ -1,5 +1,5 @@
 class Switch {
-  constructor(name, starting_x, starting_y, enabled_img, disabled_img, player_toggleable, alien_toggleable, goal, callback) {
+  constructor(name, starting_x, starting_y, enabled_img, disabled_img, player_toggleable, alien_toggleable, goal, callback, rotation=0) {
     this.starting_x = starting_x;
     this.starting_y = starting_y;
     this.enabled_img = enabled_img;
@@ -13,6 +13,7 @@ class Switch {
     this.name = name;
     this.switch_sfx;
     this.goal_sfx;
+    this.rotation = rotation;
   }
 
   preload() {
@@ -35,6 +36,7 @@ class Switch {
       this.sprite.animations.play('pulse', 8, true);
     } else {
       this.sprite = game.add.sprite(this.starting_x, this.starting_y, this.name + 'off');
+      this.sprite.angle += this.rotation;
       if (this.player_toggleable) {
         this.sprite.inputEnabled = true;
         this.sprite.events.onInputDown.add(() => {
