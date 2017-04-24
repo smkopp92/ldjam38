@@ -8,6 +8,7 @@ let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
 let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, toggle.bind(this, floorSection1));
 let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, toggle.bind(this, floorSection2));
+let playerButtonPanel = new ButtonPanel();
 let aliens;
 let floorSections;
 let walls;
@@ -25,6 +26,7 @@ level1.prototype = {
     preloadAll(walls);
     preloadAll(switches);
     goal.preload();
+    playerButtonPanel.preload();
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
@@ -34,6 +36,8 @@ level1.prototype = {
     createAll(floorSections);
     createAll(walls);
     createAll(switches);
+    playerButtonPanel.create();
+
     goal.create();
   },
   update: function() {
@@ -41,6 +45,8 @@ level1.prototype = {
     updateAll(floorSections);
     updateAll(walls);
     updateAll(switches);
+    playerButtonPanel.update();
+
     goal.update();
     if (alien.sprite.overlap(goal.sprite)){
       this.game.state.start('Level2')
