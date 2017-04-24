@@ -29,4 +29,8 @@ class ButtonPanel {
       this.buttons[button].update();
     }
   }
+
+  disable(button) {
+    this.buttons[button].disable();
+  }
 }
