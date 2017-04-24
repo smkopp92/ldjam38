@@ -12,7 +12,7 @@ level0.prototype = {
     let wall2 = new Wall(150, 0, 70, 2000);
     let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
     let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
-    let switch1 = new FloorSwitch(0, 0, floorSection, 'Green');
+    let switch1 = new Switch(0, 0, floorSection, 'Green');
     let goal = new Goal(game.world.width - 260, game.world.centerY);
     let alien = new Alien(215, 215);
 

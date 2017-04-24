@@ -1,4 +1,4 @@
-const WORLDHEIGHT = 665;
+const WORLDHEIGHT = 700;
 const WORLDWIDTH = 1375;
 
 let preloadAll = (list) => {
