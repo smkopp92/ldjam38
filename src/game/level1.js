@@ -21,40 +21,40 @@ let switches;
 let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goToLevel2);
 
 level1.prototype = {
-  preload: function(){
-    game.load.audio('bgm', ['assets/Sound/Rainbow_Run.mp3']);
-    game.load.audio('goal_sfx', ['assets/Sound/goal_sfx.mp3']);
-    aliens = [alien];
-    floorSections = [floorSection1, floorSection2];
-    walls = [wall1, wall2, wall3, wall4];
-    switches = [switch1, switch2];
-    preloadAll(aliens);
-    preloadAll(floorSections);
-    preloadAll(walls);
-    preloadAll(switches);
-    goal1.preload();
-    playerButtonPanel.preload();
-    game.stage.backgroundColor = '#eee';
-  },
-  create: function(){
-    let music = game.add.audio('bgm');
-    music.loop = true;
-    music.volume = 0.3;
-    music.play();
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    createAll(aliens);
-    createAll(floorSections);
-    createAll(walls);
-    createAll(switches);
-    playerButtonPanel.create();
-    goal1.create();
+    preload: function() {
+        game.load.audio('bgm', ['assets/Sound/Rainbow_Run.mp3']);
+        game.load.audio('goal_sfx', ['assets/Sound/goal_sfx.mp3']);
+        aliens = [alien];
+        floorSections = [floorSection1, floorSection2];
+        walls = [wall1, wall2, wall3, wall4];
+        switches = [switch1, switch2];
+        preloadAll(aliens);
+        preloadAll(floorSections);
+        preloadAll(walls);
+        preloadAll(switches);
+        goal1.preload();
+        playerButtonPanel.preload();
+        game.stage.backgroundColor = '#eee';
     },
-   update: function() {
-     updateAll(aliens);
-     updateAll(floorSections);
-     updateAll(walls);
-     updateAll(switches);
-     playerButtonPanel.update();
-     goal1.update();
+    create: function() {
+        let music = game.add.audio('bgm');
+        music.loop = true;
+        music.volume = 0.3;
+        music.play();
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        createAll(aliens);
+        createAll(floorSections);
+        createAll(walls);
+        createAll(switches);
+        playerButtonPanel.create();
+        goal1.create();
+    },
+    update: function() {
+        updateAll(aliens);
+        updateAll(floorSections);
+        updateAll(walls);
+        updateAll(switches);
+        playerButtonPanel.update();
+        goal1.update();
     }
 }
