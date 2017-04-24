@@ -18,7 +18,7 @@ level0.prototype = {
     let wall2 = new Wall(150, 0, 70, 2000);
     let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
     let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
-  
+
     let alien = new Alien(215, 215, {x: 1, y: -1});
     let playerButtonPanel = new ButtonPanel(
       () => {},
