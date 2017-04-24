@@ -6,6 +6,7 @@ level1.prototype = {
   walls: [],
   switches: [],
   gameObjects: [],
+  music: null,
 
   preload: function(){
     let alien = new Alien(220, 100, {x: 1, y: -1});
@@ -21,6 +22,9 @@ level1.prototype = {
       () => {floorSection1.on = !floorSection1.on},
       () => {floorSection2.on = !floorSection2.on},
       () => {
+        if (music) {
+          music.stop();
+        }
         game.state.start('Level1');
       }
     );
@@ -36,15 +40,17 @@ level1.prototype = {
     gameObjects = aliens.concat(floorSections, walls, switches, goal1, playerButtonPanel)
     preloadAll(gameObjects);
     game.stage.backgroundColor = '#eee';
+
   },
   create: function(){
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    let music = game.add.audio('bgm');
+    music = game.add.audio('bgm');
     music.loop = true;
     music.volume = 0.3;
     music.play();
     createAll(gameObjects);
   },
+
   update: function() {
     updateAll(gameObjects);
   }
