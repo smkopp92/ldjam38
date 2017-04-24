@@ -26,3 +26,7 @@ let softOverlap = (thisSprite, otherSprite) => {
 let toggle = (target) => {
   target.on = !target.on
 }
+
+let goal = () => {
+  game.state.start('Level2')
+}
