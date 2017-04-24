@@ -18,7 +18,7 @@ let aliens;
 let floorSections;
 let walls;
 let switches;
-let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goal);
+let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goToLevel2);
 
 level1.prototype = {
   preload: function(){
