@@ -5,7 +5,8 @@ class PlayerButton {
     this.on = false;
     this.x = x;
     this.y = y;
-    this.callback=callback;
+    this.callback = callback;
+    this.player_toggleable = true;
   }
 
   preload() {
@@ -19,6 +20,12 @@ class PlayerButton {
 
   create() {
     this.sprite = game.add.sprite(this.x, this.y, this.imgKey('up'));
+    if (this.player_toggleable) {
+      this.sprite.inputEnabled = true;
+      this.sprite.events.onInputDown.add(() => {
+        this.toggle();
+      }, this);
+    }
   }
 
   update() {
