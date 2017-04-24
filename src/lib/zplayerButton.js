@@ -7,11 +7,14 @@ class PlayerButton {
     this.y = y;
     this.callback = callback;
     this.player_toggleable = true;
+    this.enabled = true;
   }
 
   preload() {
     game.load.image(this.imgKey('up'), `assets/UI/${this.color}_${this.keyName}_up.png`);
-    game.load.image(this.imgKey('down'), `assets/UI/${this.color}_${this.keyName}_down.png`);
+    game.load.image(this.imgKey('down'), `assets/UI/${this.color}_${this.keyName}_down_.png`);
+    game.load.image(this.imgKey('up_greyed'), `assets/UI/${this.color}_${this.keyName}_up_greyed.png`);
+    game.load.image(this.imgKey('down_greyed'), `assets/UI/${this.color}_${this.keyName}_down_greyed.png`);
     this.key = game.input.keyboard.addKey(Phaser.Keyboard[this.keyName.toUpperCase()]);
     this.key.onDown.add((key) => {
       this.toggle();
@@ -33,16 +36,28 @@ class PlayerButton {
   }
 
   toggle() {
-    this.on = !this.on;
+    if(this.enabled) {
+      this.on = !this.on;
+      if (this.on) {
+        this.sprite.loadTexture(this.imgKey('down'))
+      }
+      else {
+        this.sprite.loadTexture(this.imgKey('up'))
+      }
+      this.callback(this.on);
+    }
+  }
+
+  disable() {
+    this.enabled = false;
     if (this.on) {
-      this.sprite.loadTexture(this.imgKey('down'))
+      this.sprite.loadTexture(this.imgKey('down_greyed'))
     }
     else {
-      this.sprite.loadTexture(this.imgKey('up'))
+      this.sprite.loadTexture(this.imgKey('up_greyed'))
     }
-    this.callback(this.on);
-
   }
+
   imgKey(press){
     return `${this.color}_${press}`
   }

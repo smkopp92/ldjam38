@@ -7,6 +7,7 @@ level1.prototype = {
   switches: [],
   gameObjects: [],
   music: null,
+  playerButtonPanel: null,
 
   preload: function(){
     let alien = new Alien(220, 100, {x: 1, y: -1});
@@ -17,7 +18,7 @@ level1.prototype = {
     let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
     let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
     switch2 = new Switch('blueSwitch', 255, 212, 'assets/Items/buttonBlue_pressed.png', 'assets/Items/buttonBlue.png', false, true, false, toggle.bind(this, floorSection2), 90);
-    let playerButtonPanel = new ButtonPanel(
+    playerButtonPanel = new ButtonPanel(
       () => {},
       () => {floorSection1.on = !floorSection1.on},
       () => {floorSection2.on = !floorSection2.on},
@@ -49,6 +50,9 @@ level1.prototype = {
     music.volume = 0.3;
     music.play();
     createAll(gameObjects);
+    playerButtonPanel.buttons.q.callback = () => {
+      playerButtonPanel.disable('w');
+    }
   },
 
   update: function() {
