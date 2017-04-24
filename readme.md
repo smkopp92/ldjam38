@@ -1,9 +1,10 @@
-# Extraterrestrial Escape (a game built in 72 hours for Ludum Dare #38)
+# Extraterrestrial Escape 
+## (a game built in 72 hours for Ludum Dare #38)
 
 ## Hosted Version
 [Play now!](http://ldjam38.bitballoon.com/)
 
-## Local Setup
+## Local Setup on macOS
 Run the following from the directory:
 
 `npm install`
@@ -12,8 +13,8 @@ Run the following from the directory:
 
 `grunt`
 
-## Windows 10 Setup (w/ Linux Subsystem)
-[Install the Linux Subsystem and enable dev mode](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+## Local setup on Windows (w/ Linux subsystem)
+[Install the Linux subsystem and enable dev mode](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 ### Open a command prompt and run:
 `bash`
@@ -34,15 +35,15 @@ Run the following from the directory:
 
 `grunt`
 
-Unlike in OSX, Grunt won't automatically open a tab in a browser. Open [http://localhost:8080/index.html](http://localhost:8080/index.html) manually.
+Unlike in macOS, Grunt won't automatically open a tab in a browser. Open [http://localhost:8080/index.html](http://localhost:8080/index.html) manually.
 
 ## Credits
 Game design and development:
-[Suzi Curran](https://github.com/suzicurran)
-[Sam Backus](https://github.com/sbackus)
-[James Curran](https://github.com/starslikedust)
-[Sebastian Kopp](https://github.com/smkopp92)
-[Ezra Skolnik](https://github.com/eskolnik)
+- [Suzi Curran](https://github.com/suzicurran)
+- [Sam Backus](https://github.com/sbackus)
+- [James Curran](https://github.com/starslikedust)
+- [Sebastian Kopp](https://github.com/smkopp92)
+- [Ezra Skolnik](https://github.com/eskolnik)
 
 Sprites, tiles, and SFX from kenney.nl (Thanks, folks!)
 "Rainbow Run" background music from glitchthegame.com (Thanks, Tiny Speck/Slack!)
