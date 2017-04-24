@@ -21,7 +21,7 @@ level1.prototype = {
     playerButtonPanel = new ButtonPanel(
       () => {},
       () => {floorSection1.on = !floorSection1.on},
-      () => {floorSection2.on = !floorSection2.on},
+      () => {},
       () => {
         if (music) {
           music.stop();
@@ -50,9 +50,10 @@ level1.prototype = {
     music.volume = 0.3;
     music.play();
     createAll(gameObjects);
-    playerButtonPanel.buttons.q.callback = () => {
-      playerButtonPanel.disable('w');
-    }
+    //HOW 2 DISABLE BUTTS
+    // playerButtonPanel.buttons.q.callback = () => {
+    //   playerButtonPanel.disable('w');
+    // }
   },
 
   update: function() {

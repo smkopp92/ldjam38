@@ -11,10 +11,10 @@ class PlayerButton {
   }
 
   preload() {
-    game.load.image(this.imgKey('up'), `assets/UI/${this.color}_${this.keyName}_up.png`);
-    game.load.image(this.imgKey('down'), `assets/UI/${this.color}_${this.keyName}_down_.png`);
-    game.load.image(this.imgKey('up_greyed'), `assets/UI/${this.color}_${this.keyName}_up_greyed.png`);
-    game.load.image(this.imgKey('down_greyed'), `assets/UI/${this.color}_${this.keyName}_down_greyed.png`);
+    game.load.image(this.imgKey('up'), this.imgUrl('up', ''));
+    game.load.image(this.imgKey('down'), this.imgUrl('down', ''));
+    game.load.image(this.imgKey('up_greyed'), this.imgUrl('up', '_greyed'));
+    game.load.image(this.imgKey('down_greyed'), this.imgUrl('down', '_greyed'));
     this.key = game.input.keyboard.addKey(Phaser.Keyboard[this.keyName.toUpperCase()]);
     this.key.onDown.add((key) => {
       this.toggle();
@@ -60,5 +60,9 @@ class PlayerButton {
 
   imgKey(press){
     return `${this.color}_${press}`
+  }
+
+  imgUrl(up, grey) {
+    return `assets/UI/${this.color}_${this.keyName}_${up}${grey}.png`
   }
 }
