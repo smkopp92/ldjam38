@@ -53,7 +53,7 @@ class Alien {
 
   check_wall_collision() {
     walls.forEach((tile) => {
-      if (this.sprite.overlap(tile.sprite)) {
+      if (tile.on && this.sprite.overlap(tile.sprite)) {
         this.wall_sfx.play();
         this.headings[this.axis] *= -1;
         if (this.axis == 'x') {
