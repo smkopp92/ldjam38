@@ -55,7 +55,11 @@ class Switch {
           this.callback();
           this.toggled = !this.toggled;
           this.current_alien = alien;
-          this.switch_sfx.play();
+          if (this.goal) {
+            this.goal_sfx.play();
+          } else {
+            this.switch_sfx.play();
+          }
         } else if(this.current_alien == alien && !softOverlap(alien.sprite, this.sprite)) {
           this.current_alien = null;
         }
