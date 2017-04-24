@@ -1,13 +1,14 @@
-﻿body {
-    background-image: url('/../assets/Tiles/background_tile.png');
-    margin: 0;
-    padding: 0;
+﻿html {
+    height: 100%;
+}
+
+body {
+    background-image: url('/../assets/Tiles/bg_fade.png'), url('/../assets/Tiles/background_tile.png');
+    background-size: 100% 100%, auto;
+    background-repeat: no-repeat, repeat;
 }
 
 canvas {
     margin: auto;
-    background-image: linear-gradient(
-    rgba(60, 60, 60, 0.5),
-    rgba(20, 20, 20, 0.5)
-    );
+    background-image: linear-gradient( rgba(60, 60, 60, 0.5), rgba(20, 20, 20, 0.5));
 }

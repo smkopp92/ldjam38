@@ -6,13 +6,19 @@ let wall1 = new Wall(150, 0, 4000, 70);
 let wall2 = new Wall(150, 0, 70, 2000);
 let wall3 = new Wall(WORLDWIDTH-35, 0, 70, 2000);
 let wall4 = new Wall(150, WORLDHEIGHT-35, 4000, 70);
-let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, toggle.bind(this, floorSection1));
-let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, toggle.bind(this, floorSection2));
+let switch1 = new Switch('greenButton', 0, 0, 'assets/Items/buttonGreen_pressed.png', 'assets/Items/buttonGreen.png', true, false, false, toggle.bind(this, floorSection1));
+let switch2 = new Switch('blueSwitch', 200, 412, 'assets/Items/switchLeft.png', 'assets/Items/switchRight.png', false, true, false, toggle.bind(this, floorSection2));
+let playerButtonPanel = new ButtonPanel(
+  () => {},
+  () => {floorSection1.on = !floorSection1.on},
+  () => {floorSection2.on = !floorSection2.on},
+  () => {}
+);
 let aliens;
 let floorSections;
 let walls;
 let switches;
-let goal = new Goal(1150,450);
+let goal1 = new Switch('goal1', 1050, 450, 'assets/Tiles/goal1.png', '', false, true, true, goal);
 
 level1.prototype = {
   preload: function(){
@@ -26,7 +32,8 @@ level1.prototype = {
     preloadAll(floorSections);
     preloadAll(walls);
     preloadAll(switches);
-    goal.preload();
+    goal1.preload();
+    playerButtonPanel.preload();
     game.stage.backgroundColor = '#eee';
   },
   create: function(){
@@ -39,16 +46,17 @@ level1.prototype = {
     createAll(floorSections);
     createAll(walls);
     createAll(switches);
-    goal.create();
+    playerButtonPanel.create();
+
+    goal1.create();
   },
   update: function() {
     updateAll(aliens);
     updateAll(floorSections);
     updateAll(walls);
     updateAll(switches);
-    goal.update();
-    if (alien.sprite.overlap(goal.sprite)){
-      this.game.state.start('Level2')
-    }
+    playerButtonPanel.update();
+
+    goal1.update();
   }
 }
