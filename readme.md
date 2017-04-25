@@ -1,7 +1,7 @@
 # Extraterrestrial Escape 
 (a game built in 72 hours for Ludum Dare #38 using Node.js and Phaser)
 
-![Screenshot](/deploy/assets/screenshot.png)
+![Screenshot](/deploy/assets/screenshot.PNG)
 
 ## Hosted Version
 [Play now!](http://ldjam38.bitballoon.com/)
