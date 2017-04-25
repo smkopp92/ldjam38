@@ -1,5 +1,5 @@
 # Extraterrestrial Escape 
-(a game built in 72 hours for Ludum Dare #38)
+(a game built in 72 hours for Ludum Dare #38 using Node.js and Phaser)
 
 ## Hosted Version
 [Play now!](http://ldjam38.bitballoon.com/)
@@ -51,4 +51,4 @@ Sprites, tiles, and SFX from kenney.nl (Thanks, folks!)
 
 ## This project was based on the Phaser Project Template
 
-To get started on your own game, all you need to do is download a <a target="_blank" href="https://github.com/gamecook/phaser-template-project">copy of this template</a>, the latest version of <a target="_blank" href="https://github.com/photonstorm/phaser">Phaser</a>, [NodeJS](http://nodejs.org) and [Grunt](http://gruntjs.com/).
+To get started on your own game, all you need to do is download a <a target="_blank" href="https://github.com/gamecook/phaser-template-project">copy of this template</a>, the latest version of <a target="_blank" href="https://github.com/photonstorm/phaser">Phaser</a>, [Node.js](http://nodejs.org) and [Grunt](http://gruntjs.com/).
