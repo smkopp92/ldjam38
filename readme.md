@@ -4,7 +4,7 @@
 ![Screenshot](/deploy/assets/screenshot.PNG)
 
 ## Hosted Version
-[Play now!](http://ldjam38.bitballoon.com/)
+[Play now!](http://ld38.bitballoon.com/)
 
 ## Local Setup on macOS
 ### Run the following from the directory:
