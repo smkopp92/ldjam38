@@ -46,6 +46,7 @@ Game design and development:
 - [Ezra Skolnik](https://github.com/eskolnik)
 
 Sprites, tiles, and SFX from kenney.nl (Thanks, folks!)
+
 "Rainbow Run" background music from glitchthegame.com (Thanks, Tiny Speck/Slack!)
 
 ## This project was based on the Phaser Project Template
