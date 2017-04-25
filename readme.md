@@ -1,5 +1,5 @@
 # Extraterrestrial Escape 
-## (a game built in 72 hours for Ludum Dare #38)
+(a game built in 72 hours for Ludum Dare #38)
 
 ## Hosted Version
 [Play now!](http://ldjam38.bitballoon.com/)
