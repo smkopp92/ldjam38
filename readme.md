@@ -14,7 +14,8 @@
 `grunt`
 
 ## Local setup on Windows (w/ Linux subsystem)
-[Install the Linux subsystem and enable dev mode](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+
+###[Install the Linux subsystem and enable dev mode.](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 ### Open a command prompt and run:
 `bash`
@@ -38,16 +39,18 @@
 Unlike in macOS, Grunt won't automatically open a tab in a browser. Open [http://localhost:8080/index.html](http://localhost:8080/index.html) manually.
 
 ## Credits
-Game design and development:
+
+### Game design and development:
 - [Suzi Curran](https://github.com/suzicurran)
 - [Sam Backus](https://github.com/sbackus)
 - [James Curran](https://github.com/starslikedust)
 - [Sebastian Kopp](https://github.com/smkopp92)
 - [Ezra Skolnik](https://github.com/eskolnik)
 
-Sprites, tiles, and SFX from kenney.nl (Thanks, folks!)
+### Assets: 
 
-"Rainbow Run" background music from glitchthegame.com (Thanks, Tiny Speck/Slack!)
+ - Sprites, tiles, and SFX from kenney.nl (Thanks, folks!)
+ - "Rainbow Run" background music from glitchthegame.com (Thanks, Tiny Speck/Slack!)
 
 ## This project was based on the Phaser Project Template
 
