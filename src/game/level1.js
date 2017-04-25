@@ -8,8 +8,10 @@ level1.prototype = {
     gameObjects: [],
     music: null,
     playerButtonPanel: null,
+    powerGauge: null,
 
     preload: function() {
+        let powerLevel = 15;
         let alien = new Alien(220, 100, { x: 1, y: -1 });
         let floorSection1 = new FloorSection(450, 0, 150, 800, 'Green');
         let floorSection2 = new FloorSection(900, 0, 150, 800, 'Blue');
@@ -18,9 +20,15 @@ level1.prototype = {
         let wall3 = new Wall(WORLDWIDTH - 35, 0, 70, 2000);
         let wall4 = new Wall(150, WORLDHEIGHT - 35, 4000, 70);
         let switch1 = new Switch('blueButton', 255, 212, 'assets/Items/buttonBlue_pressed.png', 'assets/Items/buttonBlue.png', false, true, false, toggle.bind(this, floorSection2), 90);
+        let powerGauge = new PowerGauge(15);
         let playerButtonPanel = new ButtonPanel(
             () => {},
-            () => { floorSection1.on = !floorSection1.on },
+            () => {
+              if(powerGauge.currentCount > 0){
+                floorSection1.on = !floorSection1.on;
+                powerGauge.lowerPower();
+              }
+            },
             () => {},
             () => {
                 if (music) {
@@ -37,10 +45,9 @@ level1.prototype = {
         floorSections = [floorSection1, floorSection2];
         walls = [wall1, wall2, wall3, wall4];
         switches = [goal1, switch1];
-        gameObjects = aliens.concat(floorSections, walls, switches, playerButtonPanel)
+        gameObjects = aliens.concat(floorSections, walls, switches, playerButtonPanel, powerGauge)
         preloadAll(gameObjects);
         game.stage.backgroundColor = '#eee';
-
     },
     create: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -49,9 +56,8 @@ level1.prototype = {
         music.volume = 0.3;
         music.play();
         createAll(gameObjects);
-        //HOW 2 DISABLE BUTTS
         // playerButtonPanel.buttons.q.callback = () => {
-        //   playerButtonPanel.disable('w');
+        //   playerButtonPanel.disable('q');
         // }
     },
 
