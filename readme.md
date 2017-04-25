@@ -15,7 +15,7 @@
 
 ## Local setup on Windows (w/ Linux subsystem)
 
-### Install the Linux subsystem and enable dev mode: [Install guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+### First, [install the Linux subsystem and enable dev mode.](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 ### Open a command prompt and run:
 `bash`
