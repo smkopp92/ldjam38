@@ -5,7 +5,7 @@
 [Play now!](http://ldjam38.bitballoon.com/)
 
 ## Local Setup on macOS
-Run the following from the directory:
+### Run the following from the directory:
 
 `npm install`
 
